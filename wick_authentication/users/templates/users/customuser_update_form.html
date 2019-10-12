@@ -1,0 +1,22 @@
+{% extends "home/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <div class="media-body">
+          <h1 class="account-heading">Editing form below</h1>
+        </div>
+      </div>
+      <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Profile Info</legend>
+              {{ form|crispy }}
+          </fieldset>
+          <div class="form-group">
+              <button class="btn btn-outline-info" type="submit">Update</button>
+              <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'user-delete' object.id %}">Delete</a>
+          </div>
+      </form>
+    </div>
+{% endblock content %}

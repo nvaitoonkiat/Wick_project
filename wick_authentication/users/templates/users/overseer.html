@@ -1,0 +1,11 @@
+{% extends "home/base.html" %}
+{% block content %}
+    <h2>Admin Page</h2>
+    <p>Here you will find a list of all the users. Click on them to edit.</p>
+    <a class="nav-item nav-link" href="{% url 'user-create' %}">Click here to add a new user</a>
+    <ul class="list-group">
+        {% for u in allUsers %}
+         <li class="list-group-item" style="background-color: #333 !important; margin: 10px;"> <a href="{% url 'user-update' u.id %}">{{u.username}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
